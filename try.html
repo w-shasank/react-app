@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        Enter the details:
+   <br>        Name :
+        <form  id="form">
+        <input type="text"  class="inputbar" placeholder="Enter your name">
+        <button class="submit">
+            Submit
+        </button>
+    </form>
+    </div>
+</body>
+<style>
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    div {
+        background-color: #880a0a; 
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .inputbar {
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        background-color: aquamarine;
+    }
+    .submit  {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+</style>
+<script>
+          form.addEventListener('submit', async(event) => {
+            event.preventDefault(); // Prevent the default form submissio
+     
+        const name = document.querySelector('.inputbar').value;
+        try {
+            const ressponse =await fetch('http://127.0.0.1:5500/try.html'
+        ,{
+            method :'POST',
+            headers:{
+                'Content-Type': 'application/json'  
+            },
+            body : JSON.stringify({
+                name:name
+            })
+        }
+       )
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
+      
+    }
+</script>
+</html>
